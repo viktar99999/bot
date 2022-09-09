@@ -1,0 +1,7 @@
+psycopg2==
+numpy==
+bs4==
+random
+string
+urllib.request
+re
