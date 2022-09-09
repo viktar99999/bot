@@ -1,0 +1,4 @@
+PyTelegramBotAPI==4.7.0
+wikipedia==1.4.0
+import re
+import sklearn==0.0
