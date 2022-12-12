@@ -1,5 +1,5 @@
 # bot
-In the repository will be placed different variants of bots.
+In the repository will be different variants of bots.
 Base:
 System - Ubuntu20.04lts
 Programming environment - Python3.8.2
