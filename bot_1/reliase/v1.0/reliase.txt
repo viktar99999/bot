@@ -1,0 +1,2 @@
+version==1.0
+Base version and base python-lib
