@@ -5,7 +5,7 @@ import wikipedia
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 wikipedia.set_lang("ru")
-bot = telebot.TeleBot('Ваш токен')
+bot = telebot.TeleBot('Your token')
 def clean_str(r):
     r = r.lower()
     r = [c for c in r if c in alphabet]
