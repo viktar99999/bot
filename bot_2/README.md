@@ -42,3 +42,7 @@ import aiogram
 import aiogram.dispatcher # class Dispatcher from message
 import aiogram.utils
 import config # token
+Reliase:
+version==1.1.0
+version==1.1.1
+version==1.1.2
