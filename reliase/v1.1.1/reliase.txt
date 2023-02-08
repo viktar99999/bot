@@ -1,0 +1,16 @@
+version==1.1.1
+Upgrade: pip3 install --upgrade aiogram==2.24
+Upgrade: pip3 install --upgrade aiohttp==3.8.3
+Upgrade: pip3 install --upgrade aiosignal==1.3.1
+Upgrade: pip3 install --upgrade async-timeout==4.0.2
+Upgrade:pip3 install --upgrade attrs==22.2.0
+Upgrade: pip3 install --upgrade Babel==2.11.0
+Upgrade: pip3 install --upgrade certifi==2022.12.7
+Upgrade: pip3 install --upgrade dnspython==2.3.0
+Upgrade: pip3 install --upgrade frozenlist==1.3.3
+Upgrade: pip3 install --upgrade magic-filter==1.0.9
+Upgrade: pip3 install --upgrade mongoengine==0.25.0
+Upgrade: pip3 install --upgrade multidict==6.0.4
+Upgrade: pip3 install --upgrade pymongo==4.3.3
+Upgrade: pip3 install --upgrade pytz==2022.7.1
+Upgrade: pip3 install --upgrade yarl==1.8.2
