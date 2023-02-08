@@ -1,0 +1,4 @@
+version==1.1.2
+Upgrade: pip3 install --upgrade aiogram==2.25
+Upgrade: pip3 install --upgrade Babel==2.11.0
+Upgrade: pip3 install --upgrade mongoengine==0.26.0
