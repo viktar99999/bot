@@ -26,3 +26,5 @@ import re # base python-lib
 import sklearn
 import telebot
 import wikipedia
+Reliase:
+version==1.0
