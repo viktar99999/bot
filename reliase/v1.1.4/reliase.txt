@@ -1,0 +1,3 @@
+version==1.1.4
+Upgrade: pip3 install --upgrade Babel==2.12.0
+Upgrade: pip3 install --upgrade mongoengine==0.27.0
