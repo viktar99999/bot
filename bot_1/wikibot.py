@@ -12,7 +12,7 @@ def clean_str(r):
     return ''.join(r)
 
 alphabet = ' 1234567890-йцукенгшщзхъфывапролджэячсмитьбюёqwertyuiopasdfghjklzxcvbnm?%.,()!:;'
-file = open('/home/vik/dialogues.txt', 'r')
+file = open('/home/user_name/dialogues.txt', 'r', encoding='utf-8')
 content = file.read()
 def update():
     with open('dialogues.txt', encoding='utf-8') as f:
@@ -80,7 +80,7 @@ def get_text_messages(message):
         global question
         question = command
         reply = get_generative_replica(command)
-        if reply == "вики ":
+        if reply == "вики":
             bot.send_message(message.from_user.id, getwiki(command))
         else:
             bot.send_message(message.from_user.id, reply)
