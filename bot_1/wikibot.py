@@ -8,9 +8,9 @@ wikipedia.set_lang("ru")
 bot = telebot.TeleBot('Your token')
 def clean_str(r):
     r = r.lower()
-    r = [c for c in r if c in alphabet]
+    r = [c for c in r if c in ALPHABET]
     return ''.join(r)
-alphabet = '1234567890-йцукенгшщзхъфывапролджэячсмитьбюёqwertyuiopasdfghjklzxcvbnm?%.,()!:;'
+ALPHABET = '1234567890-йцукенгшщзхъфывапролджэячсмитьбюёqwertyuiopasdfghjklzxcvbnm?%.,()!:;'
 file = open('/home/user_name/dialogues.txt', 'r', encoding='utf-8')
 content = file.read()
 def update():
@@ -48,7 +48,7 @@ def getwiki(s):
         wikimas = wikimas[:-1]
         wikitext2 = ''
         for x in wikimas:
-            if not '==' in x:
+            if not '==' in X:
                 if len(x.strip()) > 3:
                     wikitext2 = wikitext2+x+'.'
             else:
@@ -62,7 +62,7 @@ def getwiki(s):
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id,"Здравствуйте, Сэр.")
-question = ""
+QUESTION = ""
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     command = message.text.lower()
