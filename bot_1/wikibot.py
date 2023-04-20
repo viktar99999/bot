@@ -10,14 +10,12 @@ def clean_str(r):
     r = r.lower()
     r = [c for c in r if c in alphabet]
     return ''.join(r)
-
-alphabet = ' 1234567890-йцукенгшщзхъфывапролджэячсмитьбюёqwertyuiopasdfghjklzxcvbnm?%.,()!:;'
+alphabet = '1234567890-йцукенгшщзхъфывапролджэячсмитьбюёqwertyuiopasdfghjklzxcvbnm?%.,()!:;'
 file = open('/home/user_name/dialogues.txt', 'r', encoding='utf-8')
 content = file.read()
 def update():
     with open('dialogues.txt', encoding='utf-8') as f:
         content = f.read()
-
 blocks = content.split('\n')
 dataset = []
 for block in blocks:
@@ -26,13 +24,11 @@ for block in blocks:
         pair = [clean_str(replicas[0]), clean_str(replicas[1])]
         if pair[0] and pair[1]:
             dataset.append(pair)
-
 X_text = []
 y = []
 for question, answer in dataset[:10000]:
     X_text.append(question)
     y += [answer]
-
 global vectorizer
 count_vectorizer = CountVectorizer()
 X = count_vectorizer.fit_transform(X_text)
@@ -44,7 +40,6 @@ def get_generative_replica(text):
     text_vector = count_vectorizer.transform([text]).toarray()[0]
     question = clf.predict([text_vector])[0]
     return question
-
 def getwiki(s):
     try:
         ny = wikipedia.page(s)
@@ -53,8 +48,8 @@ def getwiki(s):
         wikimas = wikimas[:-1]
         wikitext2 = ''
         for x in wikimas:
-            if not('==' in x):
-                if(len((x.strip()))>3):
+            if not '==' in x:
+                if len(x.strip()) > 3:
                     wikitext2 = wikitext2+x+'.'
             else:
                 break
@@ -64,11 +59,9 @@ def getwiki(s):
         return wikitext2
     except Exception as e:
         return 'В Википедии нет информации об этом'
-
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id,"Здравствуйте, Сэр.")
-
 question = ""
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
@@ -80,20 +73,14 @@ def get_text_messages(message):
         global question
         question = command
         reply = get_generative_replica(command)
-        if reply == "вики":
+        if reply == "вики ":
             bot.send_message(message.from_user.id, getwiki(command))
         else:
             bot.send_message(message.from_user.id, reply)
-
 def wrong(message):
     a = f"{question}\{message.text.lower()} \n"
     with open('dialogues.txt', "a", encoding='utf-8') as f:
         f.write(a)
     bot.send_message(message.from_user.id, "Готово")
     update()
-
 bot.polling(none_stop=True, interval=0)
-
-
-
-
