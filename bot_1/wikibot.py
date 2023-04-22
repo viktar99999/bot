@@ -40,8 +40,8 @@ def get_generative_replica(text):
     return question
 def getwiki(s):
     try:
-        ny = wikipedia.page(s)
-        wikitext = ny.content[:1000]
+        wiki = wikipedia.page(s)
+        wikitext = wiki.content[:1000]
         wikimas = wikitext.split('.')
         wikimas = wikimas[:-1]
         wikitext2 = ''
