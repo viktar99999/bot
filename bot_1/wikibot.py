@@ -76,9 +76,9 @@ def get_text_messages(message):
         else:
             bot.send_message(message.from_user.id, reply)
 def wrong(message):
-    a = f"{question}\{message.text.lower()} \n"
-    with open('dialogues.txt', "a", encoding='utf-8') as f:
-        f.write(a)
+    wiki = 'f"{question}\{message.text.lower()} \n"'
+    with open('dialogues.txt', "w", encoding='utf-8') as f:
+        f.write(wiki)
     bot.send_message(message.from_user.id, "Готово")
     update()
-bot.polling(none_stop=True, interval=0)
+bot.polling(none_stop = True, interval = 0)
