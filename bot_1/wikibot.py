@@ -25,16 +25,14 @@ for block in blocks:
         if pair[0] and pair[1]:
             dataset.append(pair)
 X_text = []
-y = []
+Y = []
 for question, answer in dataset[:10000]:
     X_text.append(question)
-    y += [answer]
-global vectorizer
+    Y += [answer]
 count_vectorizer = CountVectorizer()
 X = count_vectorizer.fit_transform(X_text)
-global clf
 clf = LogisticRegression()
-clf.fit(X, y)
+clf.fit(X, Y)
 update()
 def get_generative_replica(text):
     text_vector = count_vectorizer.transform([text]).toarray()[0]
@@ -48,7 +46,7 @@ def getwiki(s):
         wikimas = wikimas[:-1]
         wikitext2 = ''
         for x in wikimas:
-            if not '==' in X:
+            if not '==' in x:
                 if len(x.strip()) > 3:
                     wikitext2 = wikitext2+x+'.'
             else:
@@ -57,7 +55,7 @@ def getwiki(s):
         wikitext2 = re.sub('\([^()]*\)', '', wikitext2)
         wikitext2 = re.sub('\{[^\{\}]*\}', '', wikitex2)
         return wikitext2
-    except Exception as e:
+    except Exception:
         return 'В Википедии нет информации об этом'
 @bot.message_handler(commands=['start'])
 def start_message(message):
@@ -67,7 +65,7 @@ QUESTION = ""
 def get_text_messages(message):
     command = message.text.lower()
     if command =="не так":
-        bot_send_message(message.from_user.id, "ф как?")
+        bot.send_message(message.from_user.id, "ф как?")
         bot.register_next_step_handler(message, wrong)
     else:
         global question
