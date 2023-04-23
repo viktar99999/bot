@@ -6,10 +6,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 wikipedia.set_lang("ru")
 bot = telebot.TeleBot('Your token')
-def clean_str(r):
-    r = r.lower()
-    r = [c for c in r if c in ALPHABET]
-    return ''.join(r)
+def clean_str(s):
+    s = s.lower()
+    s = [c for c in s if c in ALPHABET]
+    return ''.join(s)
 ALPHABET = '1234567890-йцукенгшщзхъфывапролджэячсмитьбюёqwertyuiopasdfghjklzxcvbnm?%.,()!:;'
 with open('/home/user_name/dialogues.txt', 'r', encoding='utf-8') as file:
     content = file.read()
@@ -38,9 +38,9 @@ def get_generative_replica(text):
     text_vector = count_vectorizer.transform([text]).toarray()[0]
     question_1 = clf.predict([text_vector])[0]
     return question_1
-def getwiki(s):
+def getwiki(R):
     try:
-        wiki = wikipedia.page(s)
+        wiki = wikipedia.page(R)
         wikitext = wiki.content[:1000]
         wikimas = wikitext.split('.')
         wikimas = wikimas[:-1]
@@ -77,9 +77,9 @@ def get_text_messages(message):
         else:
             bot.send_message(message.from_user.id, reply)
 def wrong(message):
-    wiki = 'f"{question}\{message.text.lower()} \n"'
-    with open('dialogues.txt', "w", encoding='utf-8') as f:
-        f.write(wiki)
+    wiki = 'f"{question}\\{message.text.lower()} \n"'
+    with open('dialogues.txt', "w", encoding='utf-8') as f_2:
+        f_2.write(wiki)
     bot.send_message(message.from_user.id, "Готово")
     update()
 bot.polling(none_stop = True, interval = 0)
