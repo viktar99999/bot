@@ -11,11 +11,11 @@ def clean_str(r):
     r = [c for c in r if c in ALPHABET]
     return ''.join(r)
 ALPHABET = '1234567890-йцукенгшщзхъфывапролджэячсмитьбюёqwertyuiopasdfghjklzxcvbnm?%.,()!:;'
-file = open('/home/user_name/dialogues.txt', 'r', encoding='utf-8')
-content = file.read()
+with open('/home/user_name/dialogues.txt', 'r', encoding='utf-8') as file:
+    content = file.read()
 def update():
-    with open('dialogues.txt', encoding='utf-8') as f:
-        content = f.read()
+    with open('/home/user_name/dialogues.txt', encoding='utf-8') as f_1:
+        content_1 = f_1.read()
 blocks = content.split('\n')
 dataset = []
 for block in blocks:
@@ -36,8 +36,8 @@ clf.fit(X, Y)
 update()
 def get_generative_replica(text):
     text_vector = count_vectorizer.transform([text]).toarray()[0]
-    question = clf.predict([text_vector])[0]
-    return question
+    question_1 = clf.predict([text_vector])[0]
+    return question_1
 def getwiki(s):
     try:
         wiki = wikipedia.page(s)
@@ -51,12 +51,13 @@ def getwiki(s):
                     wikitext2 = wikitext2+x+'.'
             else:
                 break
-        wikitext2 = re.sub('\([^()]*\)', '', wikitext2)
+        wikitext2 = re.sub('\\([^()]*\)', '', wikitext2)
         wikitext2 = re.sub('\([^()]*\)', '', wikitext2)
         wikitext2 = re.sub('\{[^\{\}]*\}', '', wikitex2)
         return wikitext2
     except Exception:
-        return 'В Википедии нет информации об этом'
+        return None
+        print('В Википедии нет информации об этом')
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id,"Здравствуйте, Сэр.")
