@@ -51,9 +51,9 @@ def getwiki(s):
                     wikitext2 = wikitext2+x+'.'
             else:
                 break
-        wikitext2 = re.sub('\\([^()]*\)', '', wikitext2)
-        wikitext2 = re.sub('\([^()]*\)', '', wikitext2)
-        wikitext2 = re.sub('\{[^\{\}]*\}', '', wikitex2)
+        wikitext2 = re.sub('\\([^()]*\\)', '', wikitext2)
+        wikitext2 = re.sub('\\([^()]*\\)', '', wikitext2)
+        wikitext2 = re.sub('\\{[^\\{\\}]*\\}', '', wikitex2)
         return wikitext2
     except Exception:
         return None
